@@ -1,0 +1,43 @@
+### Variables de entorno
+
+Se pueden crear directamente en /etc/profile:
+
+VARIABLE=data
+export VARIABLE
+
+### Variables de usuario
+
+Las variables de usuario se crean directo en el script:
+
+variable=data
+
+Para pasar una variable a otro archivo:
+
+export variable
+./archivo
+
+### Argumentos
+
+Se recuperan dentro del script con numerales: $número.
+Si son menores a 10, desde 10 en adelante: $[número].
+El número 0 está reservado para el nombre del comando.
+
+### Almacenar resultado de programa
+
+Se puede utilizar el signo de backtick `comando` o $(comando)
+
+### DEBUG
+
+-v: Utilizado paraver el resultado detallado de nuestro script, evaluado línea por línea.
+-x: Utilizado desplegar la información de los commandos que son utilizados, capturando el comando y su salida.
+
+### Expresiones regulares
+
+
+^: Caracter que representa el inicio de la expresión regular.
+$: Caracter que representa el final de la expresión regular.
+*: Caracter que representa cero o más ocurrencias de la expresión
++: Caracter que representa una o más ocurrencias de la expresión.
+{n}: Representa n veces de una expresión.
+[ ]: Representa un conjunto de caracteres, por ejemplo: [a-z] representa las letras del abecedario de la a a la z.
+
