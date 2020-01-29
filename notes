@@ -33,7 +33,6 @@ Se puede utilizar el signo de backtick `comando` o $(comando)
 
 ### Expresiones regulares
 
-
 ^: Caracter que representa el inicio de la expresión regular.
 $: Caracter que representa el final de la expresión regular.
 *: Caracter que representa cero o más ocurrencias de la expresión
@@ -41,3 +40,69 @@ $: Caracter que representa el final de la expresión regular.
 {n}: Representa n veces de una expresión.
 [ ]: Representa un conjunto de caracteres, por ejemplo: [a-z] representa las letras del abecedario de la a a la z.
 
+### Signos de comparación
+
+Comparaciones De Cadenas Alfanumericas
+Operador Verdad (TRUE) si:
+
+cadena1 = cadena2 cadena1 es igual a cadena2
+cadena1 != cadena2 cadena1 no es igual a cadena2
+cadena1 < cadena2 cadena1 es menor que cadena2
+cadena1 > cadena 2 cadena1 es mayor que cadena 2
+-n cadena1 cadena1 no es igual al valor nulo (longitud mayorque 0)
+-z cadena1 cadena1 tiene un valor nulo (longitud 0)
+
+Comparacion De Valores Numericos
+Operador Verdad (TRUE) si:
+
+x -lt y x menor que y
+x -le y x menor o igual que y
+x -eq y x igual que y
+x -ge y x mayor o igual que y
+x -gt y x mayor que y
+x -ne y x no igual que y
+
+Comprobacion De Atributos De Fichero
+Operador Verdad (TRUE) si:
+
+-d fichero fichero existe y es un directorio
+-e fichero fichero existe
+-f fichero fichero existe y es un fichero regular (no un
+directorio, u otro tipo de fichero especial)
+
+-r fichero Tienes permiso de lectura en fichero
+-s fichero fichero existe y no esta vacio
+-w fichero Tienes permiso de escritura en fichero
+-x fichero Tienes permiso de ejecucion en fichero (o de busqueda
+si es un directorio)
+
+-O fichero Eres el dueño del fichero
+-G fichero El grupo del fichero es igual al tuyo.
+
+fichero1 -nt fichero2 fichero1 es mas reciente que fichero2
+fichero1 -ot fichero2 fichero1 es mas antiguo que fichero2
+
+### Diferencia entre [] y [[]] ó (())
+
+Diferencia entre [ ] y [[ ]]
+Type    viejo [ comando ] 	nuevo [[ comando ]] 	Example
+Cadena      > 	                    > 	            [[ a > b ]]
+Cadena 	    < 	                    < 	            [[ a < b ]]
+Cadena 	    != 	                    != 	            [[ a != b ]]
+Cadena 	    = 	                    = or == 	    [[ a = b ]]
+Numero 	    -ge 	                -ge 	        [[ a -ge b ]]
+Numero 	    -le 	                -le 	        [[ a -le b ]]
+Numero 	    -lt 	                -lt 	        [[ a -lt b ]]
+Numero 	    -gt 	                -gt 	        [[ a -gt b ]]
+Concatenar 	-a 	                    && 	            [[ -n $var && -f $var ]]
+Concatenar 	-o 	                    || 	            [[ -n $var || -f $var ]]
+Agrupar 	\(...\) 	            (...) 	        [[ $var = img* && ($var = *.png || $var = *.jpg) ]]
+Patrones 	- 	                    = or == 	    [[ $name = a* ]]
+Patrones 	- 	                    =~ 	            [[ $(date) =~ ^Fri\ ...\ 13 ]]
+
+ejemplos:
+
+if [ "$answer" = y -o "$answer" = yes ]
+if [[ $answer =~ ^y(es)?$ ]]
+if [[ $answer = y* ]]
+if [ - d $pathArchivo ]

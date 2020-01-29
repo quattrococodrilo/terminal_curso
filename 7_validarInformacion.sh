@@ -12,14 +12,25 @@ regex_birthday='^19|20[0-9]{2}[1-12][1-31]$'
 echo "Regular expressions"
 read -p "Enter ID: " id
 read -p "Enter country: " country
-read -p "Enter date of birth [yyyMMdd]: " birthday
+read -p "Enter date of birth [yyyyMMdd]: " birthday
 
-# ID validate
+# Validate ID.
 if [[ $id =~ $regex_id ]]; then
-    echo "ID $id valid."
+    echo "ID $id is valid."
 else
-    echo "ID invalid."
+    echo "ID $id is invalid."
 fi
 
+# Validate country.
+if [[ $country =~ $regex_country ]]; then
+    echo "Country $country is valid."
+else
+    echo "Country $country is invalid."
+fi
 
-
+# Validate birthday.
+if [[ $birthday =~ $regex_birthday ]]; then
+    echo "Date of birth $birthday is valid"
+else
+    echo "Date of birth $birthday is invalid"
+fi
